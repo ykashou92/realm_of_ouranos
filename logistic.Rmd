@@ -1,0 +1,131 @@
+---
+title: "Logistic Regression"
+output:
+    html_document:
+        toc: true
+        toc_float: true
+---
+
+__Logistic Regression__ is the prediction of a __*class*__, denoted by $\hat{y}$, given a set of input features and their corresponding targets $x^{(i)}, y^{(i)}$, despite the naming, _Logistic Regression_ is a __*classification*__ algorithm. 
+
+It typically uses the __Sigmoid__ function for this classification.
+The __Sigmoid__ function is fairly simple, it is characteristic of having an 'S'-shape curve, and there are many variations of this function.
+
+***
+
+## The Logistic Classifier
+
+The __Logistic__ variation of the __Sigmoid__ function is defined mathematically below:
+
+\[z = w^T X\]
+\[\sigma(z) = \frac{e^z}{1 + e^{z}} = \frac{1}{1 + e^{-z}}\]
+\[p(y = 1 | x) = \sigma(w^{T} X)\]
+
+And the probability that $y = 1$ given $x$ is equal to $\sigma(z)$, where $z$ is the weights matrix transposed $w^T$, times $X$, the matrix of input data.
+
+```{r}
+sigmoid <- function(z) {
+    1 / (1 + exp(-z))
+}
+z <- seq(-10, 10, 0.01)
+plot(z, sigmoid(z), col = "#ec0928")
+title("The Logistic Classifier")
+```
+
+***
+
+### Understanding $\sigma(z)$
+
+Suppose you are trying to classify books into _Horror_ and _Sci-Fi_ classes,
+with _Horror_ represented by the value $y = 0$ and _Sci-Fi_ represented by $y = 1$.
+
+If you take a look at the previous plot, you can see that:
+
+$$
+\begin{aligned}
+\sigma(-10) &\approx 0 \\ 
+\sigma(0) &= 0.5 \\
+\sigma(10) &\approx 1 \\
+\end{aligned}
+$$
+
+The value that $\sigma(z)$ returns is a probability value, which we can use for our classification:
+
+Which indicates that:
+
+- As $z \to 10$, then $p(y = 1\ | x) \to 1$ and $p(y = 0\ | x) \to 0$
+- As $z \to -10$, then $p((y = 1)\ | x) \to 0$ and $p(y = 0\ | x) \to 1$
+
+***
+
+## The Hyperbolic Tangent Classifier
+
+The __Hyperbolic Tangent__, like the __Logistic__ function is a variation of the __Sigmoid__ function, and like the __Logistic__ function, it is passed $z$:
+
+$$
+\begin{aligned}
+z &= w^T X \\
+tanh(z) &= 2\sigma(2z) - 1 \\
+tanh(z) &= \frac{e^z - e^{-z}}{e^z + e^{-z}} \\
+\end{aligned}
+$$
+
+```{r}
+sigmoid <- function(z) {
+    1 / (1 + exp(-z))
+}
+
+tanh <- function(z) {
+    2*sigmoid(2*z) - 1
+}
+z <- seq(-10, 10, 0.01)
+plot(z, tanh(z), col = "#008CBA")
+title("The Hyperbolic Tangent Classifier")
+```
+
+***
+
+### Understanding $\tanh(z)$
+
+And hence prediction probabilities are also made according to the value that the __Hyperbolic Tangent__ function returns, however there is one slight-but-important change:
+
+This time to represent _Horror_ and _Sci-Fi_, we will use $y = \left\{-1, 1\right\}$, respectively, instead of $y= \left\{0, 1\right\}$.
+
+$$
+\begin{aligned}
+\tanh(-10) &\approx -1 \\ 
+\tanh(0) &= 0.5 \\
+\tanh(10) &\approx 1 \\
+\end{aligned}
+$$
+
+From the previous plot:
+
+- As $z \to 10$, then $p(y = 1\  | x) \to 1$, and $p(y = 0\  | x) \to 0$
+- As $z \to -10$, then $p((y = 1)\  | x) \to -1$ and $p((y = 1)\  | x) \to 1$
+- If $z = 0$, then $p(y = 1 \ \cap \ y = 0 \ | x) = 0.5$
+
+***
+
+## TL;DR (Too long; didn't read.)
+
+For the __Logistic Classifier__:
+
+- If $p(\text{Sci-Fi} | x) > 0.5$, then predict Sci-Fi
+- If $p(\text{Sci-Fi} | x) < 0.5$, then predict Horror
+- If $p(\text{Horror} | x) > 0.5$, then predict Horror
+- If $p(\text{Horror} | x) < 0.5$, then predict Sci-Fi
+- If $p(\text{Horror or Sci-Fi} | x) = 0.5$, then predict either.
+
+For the __Hyperbolic Tangent Classifier__:
+
+- If $p(\text{Sci-Fi} | x) > 0$, then predict Sci-Fi
+- If $p(\text{Sci-Fi} | x) < 0$, then predict Horror
+- If $p(\text{Horror} | x) > 0$, then predict Horror
+- If $p(\text{Horror} | x) < 0$, then predict Sci-Fi
+- If $p(\text{Horror or Sci-Fi} | x) = 0$, then predict either.
+
+***
+
+
+

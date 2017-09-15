@@ -1,0 +1,54 @@
+name: "the_midnight_grind"
+output:
+  html_document:
+    theme: yeti
+    css: styles.css
+    #code_folding: show
+    #highlight: tango
+    include:
+      after_body: footer.html
+navbar:
+  title: <span style="font-size:24px">The Midnight Enterprise</span>
+  left:
+    - text: "Projects"
+      menu: 
+        - text: "Data Driven Dashboards with R"
+          href: ddd_R.html
+          icon: fa-dashboard fa-lg
+        - text: "Statistical Metrics for Powerlifting"
+          icon: fa-area-chart fa-lg
+          href: stat_metrics_pl.html
+        - text: "Spindle"
+          icon: 
+          href: spindle.html
+      href: projects.htm
+      icon: fa-university fa-lg
+    - text: "Data Wizardry"
+      href: data.html
+      icon: fa-code fa-lg
+    - text: "Math Madness"
+      href: math.html
+      icon: fa-superscript fa-lg
+      menu:
+        - text: "Machine Learning"
+        - text: "Linear Regression"
+          href: linear.html
+        - text: "Logistic Regression"
+          href: logistic.html
+        - text: "---------"
+        - text: "Statistics"
+        - text: "Bayesian Conjugate Priors"
+          href: bayesian.html
+        - text: "---------"
+        - text: "Deep Learning"
+        - text: "Neural Nets"
+          href: neural.html
+        - text: "Generative Adverserial Networks"
+          href: gan.html
+  right:
+    - text: "About Me!"
+      href: about.html
+      icon: fa-user fa-lg    
+    - text: "Résumé"
+      href: https://drive.google.com/file/d/0B_vLNTzY7-nKQnNYOTFwX3hqZ0E/view?usp=sharing
+      icon: fa-file-pdf-o fa-lg

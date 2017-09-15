@@ -1,0 +1,40 @@
+---
+title: "Home"
+---
+
+Welcome to __The Daybreak Enterprise__, your resource for data science, my mathematical endeavours, my daybreak expression and initiative.
+
+In this website you'll find the following:
+
+- __Mathematics__ ranging from simple _Calculus_ to _A.I_.
+- __Data Science__ methodologies, explanations and code implementations in _R_, _Python_ and _Julia_.
+- __Data Visualizations__ because aesthetics are important too.
+
+***
+
+
+## Current Projects  
+
+### Data Science
+
+This personal research website
+[Daybreak](https://github.com/ykashou92/the_daybreak_enterprise)
+
+### Mathematics
+
+__Die Singularität__
+
+A book on the post-physical singularity that we call the self.
+
+***
+
+## MOOC Progress
+
+* Use `formattable` package
+
+|  Status       | Course Title                       | Platform   |
+|:-------------:|:----------------------------------:|:----------:|
+| Complete      | Linear Regression in Python        | Udemy      |
+| Complete      | Logistic Regression in Python      | Udemy      |          
+| In Progress   | Bayesian ML: A/B Testing in Python | Udemy      |        
+

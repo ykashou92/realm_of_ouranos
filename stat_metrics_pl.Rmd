@@ -1,0 +1,113 @@
+---
+title: "Statistical Metrics for Powerlifting"
+output:
+    html_document:
+        toc: true
+        toc_float: true
+---
+
+There are two main metrics in Powerlifting that help us regulate our training, and they are volume and intensity.
+
+However, there might be a better way to gauge the volume and intensity of our training sessions.
+
+***
+
+## Standard Metrics
+
+### Volume
+
+__Volume__ is the measurement of the total load lifted in a training session or across multiple sessions. That being said, mathematically, in terms of weights, 
+\[V = {w \cdot r \cdot s}\]
+And that is the weight $\omega$,  
+repetitions $r$,  
+and finally sets $s$.
+
+***
+
+#### Example 1 - Sumo Deadlift
+
+Yesterday I lifted the following:
+
+| Weight $(w)$  | Repetitions $(r)$ | Sets $(s)$ | Volume $(V)$ |
+|:-------------:|:-----------------:|:----------:|:------------:|
+| 155           | 5                 | 1          |  775         |
+| 175           | 3                 | 1          |  525         |
+| 195           | 5                 | 1          |  975         |
+| 205           | 2                 | 1          |  410         |
+
+$$
+\begin{aligned}
+Total \ Volume \ (V) &= 775 + 525 + 975 + 410 \\
+&= 2685kg
+\end{aligned}
+$$
+***
+
+#### Example 2 - Reverse Band Seated Military Press
+
+Today I plan to lift the following:
+
+| Weight $(w)$  | Repetitions $(r)$  | Sets $(s)$ | Volume $(V)$ |
+|:-------------:|:------------------:|:----------:|:------------:|
+| 77.5          | 5                  | 1          |  387.5       |
+| 87.5          | 3                  | 1          |  262.5       |
+| 97.5          | 4                  | 1          |  390         |
+| 102.5         | 2                  | 5          |  1025        |
+
+$$
+\begin{aligned}
+Total \ Volume \ (V) &= 387.5 + 262.5 + 390 + 1025 \\
+&= 2075kg
+\end{aligned}
+$$
+
+***
+
+### Intensity
+
+__Intensity__ is the measure of how heavy are the weights used.
+It is a percentage measure of $\frac{w}{M}$, where $w$ is the weight used and $M$ is the maximum weight you are capable of lifting once, traditionally called the __1-Rep Max__ or __(1RM)__
+
+\[I = \frac{w}{M} \cdot 100 \% \]
+
+***
+
+#### Example 1 - Sumo Deadlift
+
+Yesterday I lifted the following:
+
+| Weight $(w)$  | 1RM $(M)$     | Intensity $(I)$ | 
+|:-------------:|:-------------:|:---------------:|
+| 155           | 220           | 70.45%          | 
+| 175           | 220           | 79.54%          | 
+| 195           | 220           | 88.63%          | 
+| 205           | 220           | 93.18%          | 
+
+$$
+\begin{aligned}
+Average \ Intensity \ (I) &= (70.45\% + 79.54\% + 88.63\% + 93.18\%) / 4 \\
+&= 82.95\%
+\end{aligned}
+$$
+
+***
+
+## Proposed Relative Metrics {.tabset}
+
+### Relative Average Volume (RAV)
+
+***
+
+### Relative Intensity Volume (RIV)
+
+***
+
+## Proposed Absolute Metrics {.tabset}
+
+### Absolute Average Volume (AAV)
+
+***
+
+### Absolute Intensity Volume (AIV)
+
+***

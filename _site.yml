@@ -1,0 +1,64 @@
+name: "the_daybreak_enterprise"
+output_dir: _site
+urlcolor: yellow
+output:
+  html_document:
+    theme: yeti
+    css: styles.css
+    #code_folding: show
+    #highlight: tango
+
+    include:
+      after_body: footer.html
+navbar:
+  title: <span style="font-size:24px">Daybreak Enterprise</span>
+  href:
+  left:
+    - text: "Projects"
+      menu:
+        - text: "Statistical Metrics for Powerlifting"
+          href: stat_metrics_pl.html
+        - text: "Spindle"
+          icon:
+          href: spindle.html
+      href: projects.html
+      icon: fa-university fa-lg
+    - text: "Data Wizardry"
+      href: data.html
+      icon: fa-code fa-lg
+      menu:
+        - text: "R, Shiny & Knitr"
+        - text: "Data Driven Dashboards with R"
+          href: ddd_R.html
+        - text: "---------"
+        - text: "Python and Anaconda"
+        - text: "lr.py"
+          href: lr.html
+    - text: "Math Madness"
+      href: math.html
+      icon: fa-superscript fa-lg
+      menu:
+        - text: "Machine Learning"
+        - text: "Linear Regression"
+          href: linear.html
+        - text: "Logistic Regression"
+          href: logistic.html
+        - text: "---------"
+        - text: "Statistics"
+        - text: "Bayesian Conjugate Priors"
+          href: bayesian.html
+        - text: "---------"
+        - text: "Deep Learning"
+        - text: "MNIST"
+          href: mnist.html
+        - text: "Neural Nets"
+          href: neural.html
+        - text: "Generative Adverserial Networks"
+          href: gan.html
+  right:
+    - text: "About Me!"
+      href: about.html
+      icon: fa-user fa-lg
+    - text: "Résumé"
+      href: https://drive.google.com/file/d/0B_vLNTzY7-nKQnNYOTFwX3hqZ0E/view?usp=sharing
+      icon: fa-file-pdf-o fa-lg

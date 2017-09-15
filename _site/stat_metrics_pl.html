@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Statistical Metrics for Powerlifting</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><span style="font-size:24px">Daybreak Enterprise</span></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-university fa-lg"></span>
+     
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="stat_metrics_pl.html">Statistical Metrics for Powerlifting</a>
+    </li>
+    <li>
+      <a href="spindle.html">Spindle</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-code fa-lg"></span>
+     
+    Data Wizardry
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R, Shiny &amp; Knitr</li>
+    <li>
+      <a href="ddd_R.html">Data Driven Dashboards with R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Python and Anaconda</li>
+    <li>
+      <a href="lr.html">lr.py</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-superscript fa-lg"></span>
+     
+    Math Madness
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Machine Learning</li>
+    <li>
+      <a href="linear.html">Linear Regression</a>
+    </li>
+    <li>
+      <a href="logistic.html">Logistic Regression</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Statistics</li>
+    <li>
+      <a href="bayesian.html">Bayesian Conjugate Priors</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Deep Learning</li>
+    <li>
+      <a href="mnist.html">MNIST</a>
+    </li>
+    <li>
+      <a href="neural.html">Neural Nets</a>
+    </li>
+    <li>
+      <a href="gan.html">Generative Adverserial Networks</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="about.html">
+    <span class="fa fa-user fa-lg"></span>
+     
+    About Me!
+  </a>
+</li>
+<li>
+  <a href="https://drive.google.com/file/d/0B_vLNTzY7-nKQnNYOTFwX3hqZ0E/view?usp=sharing">
+    <span class="fa fa-file-pdf-o fa-lg"></span>
+     
+    Résumé
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Statistical Metrics for Powerlifting</h1>
+
+</div>
+
+
+<p>There are two main metrics in Powerlifting that help us regulate our training, and they are volume and intensity.</p>
+<p>However, there might be a better way to gauge the volume and intensity of our training sessions.</p>
+<hr />
+<div id="standard-metrics" class="section level2">
+<h2>Standard Metrics</h2>
+<div id="volume" class="section level3">
+<h3>Volume</h3>
+<p><strong>Volume</strong> is the measurement of the total load lifted in a training session or across multiple sessions. That being said, mathematically, in terms of weights, <span class="math display">\[V = {w \cdot r \cdot s}\]</span> And that is the weight <span class="math inline">\(\omega\)</span>,<br />
+repetitions <span class="math inline">\(r\)</span>,<br />
+and finally sets <span class="math inline">\(s\)</span>.</p>
+<hr />
+<div id="example-1---sumo-deadlift" class="section level4">
+<h4>Example 1 - Sumo Deadlift</h4>
+<p>Yesterday I lifted the following:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Weight <span class="math inline">\((w)\)</span></th>
+<th align="center">Repetitions <span class="math inline">\((r)\)</span></th>
+<th align="center">Sets <span class="math inline">\((s)\)</span></th>
+<th align="center">Volume <span class="math inline">\((V)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">155</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">775</td>
+</tr>
+<tr class="even">
+<td align="center">175</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">525</td>
+</tr>
+<tr class="odd">
+<td align="center">195</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">975</td>
+</tr>
+<tr class="even">
+<td align="center">205</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">410</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\begin{aligned}
+Total \ Volume \ (V) &amp;= 775 + 525 + 975 + 410 \\
+&amp;= 2685kg
+\end{aligned}
+\]</span> ***</p>
+</div>
+<div id="example-2---reverse-band-seated-military-press" class="section level4">
+<h4>Example 2 - Reverse Band Seated Military Press</h4>
+<p>Today I plan to lift the following:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Weight <span class="math inline">\((w)\)</span></th>
+<th align="center">Repetitions <span class="math inline">\((r)\)</span></th>
+<th align="center">Sets <span class="math inline">\((s)\)</span></th>
+<th align="center">Volume <span class="math inline">\((V)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">77.5</td>
+<td align="center">5</td>
+<td align="center">1</td>
+<td align="center">387.5</td>
+</tr>
+<tr class="even">
+<td align="center">87.5</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">262.5</td>
+</tr>
+<tr class="odd">
+<td align="center">97.5</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">390</td>
+</tr>
+<tr class="even">
+<td align="center">102.5</td>
+<td align="center">2</td>
+<td align="center">5</td>
+<td align="center">1025</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\begin{aligned}
+Total \ Volume \ (V) &amp;= 387.5 + 262.5 + 390 + 1025 \\
+&amp;= 2075kg
+\end{aligned}
+\]</span></p>
+<hr />
+</div>
+</div>
+<div id="intensity" class="section level3">
+<h3>Intensity</h3>
+<p><strong>Intensity</strong> is the measure of how heavy are the weights used. It is a percentage measure of <span class="math inline">\(\frac{w}{M}\)</span>, where <span class="math inline">\(w\)</span> is the weight used and <span class="math inline">\(M\)</span> is the maximum weight you are capable of lifting once, traditionally called the <strong>1-Rep Max</strong> or <strong>(1RM)</strong></p>
+<p><span class="math display">\[I = \frac{w}{M} \cdot 100 \% \]</span></p>
+<hr />
+<div id="example-1---sumo-deadlift-1" class="section level4">
+<h4>Example 1 - Sumo Deadlift</h4>
+<p>Yesterday I lifted the following:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Weight <span class="math inline">\((w)\)</span></th>
+<th align="center">1RM <span class="math inline">\((M)\)</span></th>
+<th align="center">Intensity <span class="math inline">\((I)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">155</td>
+<td align="center">220</td>
+<td align="center">70.45%</td>
+</tr>
+<tr class="even">
+<td align="center">175</td>
+<td align="center">220</td>
+<td align="center">79.54%</td>
+</tr>
+<tr class="odd">
+<td align="center">195</td>
+<td align="center">220</td>
+<td align="center">88.63%</td>
+</tr>
+<tr class="even">
+<td align="center">205</td>
+<td align="center">220</td>
+<td align="center">93.18%</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[
+\begin{aligned}
+Average \ Intensity \ (I) &amp;= (70.45\% + 79.54\% + 88.63\% + 93.18\%) / 4 \\
+&amp;= 82.95\%
+\end{aligned}
+\]</span></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="proposed-relative-metrics" class="section level2 tabset">
+<h2>Proposed Relative Metrics</h2>
+<div id="relative-average-volume-rav" class="section level3">
+<h3>Relative Average Volume (RAV)</h3>
+<hr />
+</div>
+<div id="relative-intensity-volume-riv" class="section level3">
+<h3>Relative Intensity Volume (RIV)</h3>
+<hr />
+</div>
+</div>
+<div id="proposed-absolute-metrics" class="section level2 tabset">
+<h2>Proposed Absolute Metrics</h2>
+<div id="absolute-average-volume-aav" class="section level3">
+<h3>Absolute Average Volume (AAV)</h3>
+<hr />
+</div>
+<div id="absolute-intensity-volume-aiv" class="section level3">
+<h3>Absolute Intensity Volume (AIV)</h3>
+<hr />
+</div>
+</div>
+
+<p>Copyright &copy; 2017 AeonTech, Inc. All rights reserved.</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

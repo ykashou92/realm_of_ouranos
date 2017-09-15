@@ -1,0 +1,53 @@
+---
+title: "Linear Regression"
+output:
+    html_document:
+        toc: true
+        toc_depth: 3
+        toc_float: true
+---
+
+__Linear Regression__ is the prediction of a __*target*__, denoted by $\hat{y}$, given a set of input features and their corresponding targets $x^{(i)}, y^{(i)}$
+
+Where: 
+$x_n^{(i)}, y_n^{(i)}$ could be the training examples of some dataset with $n$-features.
+$\hat{y}$ would be the predicted value, given feature value $x_n^{(i)}$.
+
+From the name, _Linear Regression_ is in the form of the equation of the line:
+\[\hat{y} = ax + b + \epsilon\]  
+Where $a$ is the gradient/slope of the line, $b$ is the $y - intercept$ and $\epsilon$ is error margin.
+
+***
+
+## Univariate Linear Regression {.tabset}
+__Univariate Linear Regression__ is, as the name suggests, Linear Regression with a _single variable_. For example, if I want to predict the sales of a company given the amount of regular customers.
+
+In this case we would have, as mentioned above, training examples $x^{(i)},\ y^{(i)}$.   
+$x$ referring to the amount of regular customers,  
+and $y$ referring to the sales of the company.
+
+### Math Equation
+
+***
+
+### Vectorized Implementation in R
+
+***
+
+## Multivariate Linear Regression {.tabset}
+__Multivariate Linear Regression__ is, as the name suggests, Linear Regression with _multiple variables_. For example, if I want to predict the sales of a company given the amount of regular customers, the social media outreach, the amount of daily visitors to the website.
+
+In this case we would have, as mentioned above, training examples $x_1^{(i)}, x_2^{(i)}, x_3^{(i)},\ y^{(i)}$.  
+$x_1$ referring to the amount of regular customers,  
+$x_2$ referring to the social media outreach,   
+$x_3$ referring to the amount of daily visitors to the website,  
+and $y$ referring to the sales of the company.  
+
+
+### Math Equation
+
+***
+
+### Vectorized Implementation
+
+***

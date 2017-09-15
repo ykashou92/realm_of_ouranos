@@ -1,0 +1,15 @@
+---
+title: "About Me!"
+---
+
+My name is <span style="color:#ec0928"><b>Yanal Kashou</b></span>, and I'm a __polymath__, a __seeker of mathematical enlightenment__, a __data scientist__, and a __powerlifter__.   
+
+I have a _BMathSc in Applied Mathematics and Astronomy_ from __AUT__
+
+I believe in the _exploration_ and _exploitation_ of our technological and spiritual potential to transcend our reality and accomplish our _individual_ and _collective_ goals.
+
+My favourite quote is my own:
+
+> Just like a serpent undergoing ecdysis, we must shed the layers of our ego.
+
+***

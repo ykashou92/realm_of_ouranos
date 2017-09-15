@@ -1,0 +1,153 @@
+---
+title: "Data Driven Dashboards with R"
+output:
+    html_document:
+        toc: true
+        toc_float: true
+---
+
+This project is an employee dashboard built with various tools in the __R__ language.  
+The purpose of this undertaking is to provide an in depth dive into the world of dashboards.
+
+I created this project in order to teach this to other people on the Udemy platform.  
+  
+***
+
+## Custom Functions {.tabset}
+
+### install_packages.R
+
+### import_libaries.R
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+library(devtools)
+library(xlsx)
+library(shiny)
+library(shinydashboard)
+library(flexdashboard)
+library(formattable)
+library(DT)
+library(magrittr)
+library(highcharter)
+library(htmlwidgets)
+library(lubridate)
+library(calheatmapR)
+```
+
+### read_data.R
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Index Sheet
+df0 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 1,
+                 startRow = 1,
+                 header = TRUE)
+# Employee #1
+df1 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 2,
+                 startRow = 4,
+                 header = TRUE)
+# Employee #2
+df2 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 3,
+                 startRow = 4,
+                 header = TRUE)
+# Employee #3
+df3 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 4,
+                 startRow = 4,
+                 header = TRUE)
+# Employee #4
+df4 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 5,
+                 startRow = 4,
+                 header = TRUE)
+# Employee #5
+df5 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 6,
+                 startRow = 4,
+                 header = TRUE)# Employee #6
+df6 = read.xlsx("employee_data.xlsx",
+                sheetIndex = 7,
+                startRow = 4,
+                header = TRUE)
+# Employee #7
+df7 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 8,
+                 startRow = 4,
+                 header = TRUE)
+# Employee #8
+df8 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 9,
+                 startRow = 4,
+                 header = TRUE)
+# Employee #9
+df9 <- read.xlsx("employee_data.xlsx",
+                 sheetIndex = 10,
+                 startRow = 4,
+                 header = TRUE)
+# Employee #10
+df10 <- read.xlsx("employee_data.xlsx",
+                  sheetIndex = 11,
+                  startRow = 4,
+                  header = TRUE)
+```
+
+### generate_heatmap.R
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+generate_heatmap <- function(dat) {
+    
+    # Subset the desired columns from dataframe
+    dat <- dat[,c('date', 'time')]
+    
+    # Parse date
+    dat$date <- parse_date_time(dat$date, orders = "ymd")
+    
+    # Make sure latest entries are being shown by plotting the current year
+    # NOTE: I have found that there is a glitch with choosing 2017 as the current year and start_date. 
+    
+    # Select year out of date
+    year <- substr(tail(dat$date, 1), 1, 4)
+    
+    # Select month out of date
+    # if (year == 2017) { 
+         month <- 12
+    # }
+    # else {
+    #     month <- substr(tail(dat$date, 1), 6, 7)
+    # }
+    start_date <- (as.numeric(as.Date(paste0(year,"-01-01"))) * 24 * 60 * 60 * 1000)
+    
+    
+    # Convert data to acceptable form, i.e to '$timestamp : value' form
+    timestamp <- as.numeric(dat$date)
+    value <- dat$time
+    dat <- setNames(as.list(value), timestamp)
+    
+    # Create heatmap
+    heatmap <- calheatmapR(data = dat, height = "100%") %>%
+        chDomain(domain = "month", 
+                 subDomain = "day",
+                 start = start_date,
+                 range = month,
+                 cellPadding = 2,
+                 cellSize = 10,
+                 margin = 1) %>%
+        chLegend(legend = seq(1, 10, 2),
+                 colours = list(min = "#00000c", # Sky-Blue
+                                max = "cyan", # Navy-Blue
+                                empty = "black"),
+                 cellSize = 15,
+                 cellPadding = 5) %>%
+        chLabel(#position = "right",
+                #rotate = "right",
+                #align = "left",
+                width = 33,
+                itemName = "Hour")
+    return(heatmap)
+}
+
+generate_heatmap(df6)
+
+```
+
+***
