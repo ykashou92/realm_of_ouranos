@@ -1,8 +1,19 @@
 ---
-title: "Home"
+title: Homepage
+output:
+    html_document:
+        toc: true
+        toc_float: true
 ---
 
-Welcome to __The Daybreak Enterprise__, your resource for data science, my mathematical endeavours, my daybreak expression and initiative.
+
+***
+
+```{r setup, include=FALSE}
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+Welcome to __&#9788; Daybreak &#9788;__, your resource for data science, my mathematical endeavours, my daybreak expression and initiative.
 
 In this website you'll find the following:
 
@@ -17,8 +28,10 @@ In this website you'll find the following:
 
 ### Data Science
 
-This personal research website
-[Daybreak](https://github.com/ykashou92/the_daybreak_enterprise)
+- __Daybreak__ This personal research website. [GitHub Repo](https://github.com/ykashou92/project_daybreak)
+
+
+- __Electronaut__ 
 
 ### Mathematics
 
@@ -28,13 +41,23 @@ A book on the post-physical singularity that we call the self.
 
 ***
 
-## MOOC Progress
+## Professional Development
 
-* Use `formattable` package
+I have been taking a lot of online courses as a form of formal learning to make use of my free time, learn something new and delve deeper into *Data Science*, *Computer Programming* and various other related subjects:
 
-|  Status       | Course Title                       | Platform   |
-|:-------------:|:----------------------------------:|:----------:|
-| Complete      | Linear Regression in Python        | Udemy      |
-| Complete      | Logistic Regression in Python      | Udemy      |          
-| In Progress   | Bayesian ML: A/B Testing in Python | Udemy      |        
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(xlsx)
+library(formattable)
 
+course_table <- read.xlsx("course_table.xlsx",
+                 sheetIndex = 1,
+                 startRow = 1,
+                 header = TRUE)
+names(course_table)[3] <- "Course Title"
+library(knitr)
+kable(course_table)
+```
+
+Number of courses completed so far =  __`r nrow(subset(course_table, Status == "Complete")) + 9`__
+
+***

@@ -6,6 +6,8 @@ output:
         toc_float: true
 ---
 
+***
+
 __Logistic Regression__ is the prediction of a __*class*__, denoted by $\hat{y}$, given a set of input features and their corresponding targets $x^{(i)}, y^{(i)}$, despite the naming, _Logistic Regression_ is a __*classification*__ algorithm. 
 
 It typically uses the __Sigmoid__ function for this classification.

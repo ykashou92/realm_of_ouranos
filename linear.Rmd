@@ -7,6 +7,9 @@ output:
         toc_float: true
 ---
 
+
+***  
+
 __Linear Regression__ is the prediction of a __*target*__, denoted by $\hat{y}$, given a set of input features and their corresponding targets $x^{(i)}, y^{(i)}$
 
 Where: 

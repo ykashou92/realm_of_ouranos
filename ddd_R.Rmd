@@ -6,6 +6,8 @@ output:
         toc_float: true
 ---
 
+***
+
 This project is an employee dashboard built with various tools in the __R__ language.  
 The purpose of this undertaking is to provide an in depth dive into the world of dashboards.
 
@@ -93,6 +95,7 @@ df10 <- read.xlsx("employee_data.xlsx",
 
 ### generate_heatmap.R
 
+    
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
 generate_heatmap <- function(dat) {
     
@@ -103,18 +106,12 @@ generate_heatmap <- function(dat) {
     dat$date <- parse_date_time(dat$date, orders = "ymd")
     
     # Make sure latest entries are being shown by plotting the current year
-    # NOTE: I have found that there is a glitch with choosing 2017 as the current year and start_date. 
-    
+    # 
     # Select year out of date
     year <- substr(tail(dat$date, 1), 1, 4)
     
     # Select month out of date
-    # if (year == 2017) { 
-         month <- 12
-    # }
-    # else {
-    #     month <- substr(tail(dat$date, 1), 6, 7)
-    # }
+    month <- 12
     start_date <- (as.numeric(as.Date(paste0(year,"-01-01"))) * 24 * 60 * 60 * 1000)
     
     
@@ -138,16 +135,18 @@ generate_heatmap <- function(dat) {
                                 empty = "black"),
                  cellSize = 15,
                  cellPadding = 5) %>%
-        chLabel(#position = "right",
-                #rotate = "right",
-                #align = "left",
-                width = 33,
-                itemName = "Hour")
+        chLabel(
+            width = 33,
+            itemName = "Hour")
     return(heatmap)
 }
 
 generate_heatmap(df6)
 
 ```
+
+&nbsp;
+
+__Note__ I have found that there is a glitch with choosing 2017 as the current year and start_date. 
 
 ***

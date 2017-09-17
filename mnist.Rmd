@@ -7,6 +7,20 @@ output:
         fig_caption: true
 ---
 
+***
+
+The MNIST dataset is a large dataset of handwritten digits; used primarily for the training of image processing systems.
+
+Many researchers usually test the performance of their algorithms and  neural network implementations on this dataset.
+
+```{r, echo=FALSE, fig.show='hold', message=FALSE, warning=FALSE, out.width="30%", results="asis"}
+knitr::include_graphics("mnist_dark.png")
+knitr::include_graphics("mnist_sorted.png")
+knitr::include_graphics("mnist_4.png")
+```
+
+***
+
 ## The Data
 
 ### What does the data look like?

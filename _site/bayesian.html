@@ -11,7 +11,7 @@
 
 
 
-<title>Logistic Regression</title>
+<title>Bayesian Conjugate Priors</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -382,109 +382,37 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Logistic Regression</h1>
+<h1 class="title toc-ignore">Bayesian Conjugate Priors</h1>
 
 </div>
 
 
 <hr />
-<p><strong>Logistic Regression</strong> is the prediction of a <strong><em>class</em></strong>, denoted by <span class="math inline">\(\hat{y}\)</span>, given a set of input features and their corresponding targets <span class="math inline">\(x^{(i)}, y^{(i)}\)</span>, despite the naming, <em>Logistic Regression</em> is a <strong><em>classification</em></strong> algorithm.</p>
-<p>It typically uses the <strong>Sigmoid</strong> function for this classification. The <strong>Sigmoid</strong> function is fairly simple, it is characteristic of having an ‘S’-shape curve, and there are many variations of this function.</p>
+<p>The <em>Bayesian paradigm</em> is revolutionary because of how it differs from the <em>frequentist paradigm</em> such that it readily accepts change, where your prior belief in the probability of an event occuring may be modified according to how often the event actually occurs, and how well it maintains this newly-found probability, or posterior.</p>
 <hr />
-<div id="the-logistic-classifier" class="section level2">
-<h2>The Logistic Classifier</h2>
-<p>The <strong>Logistic</strong> variation of the <strong>Sigmoid</strong> function is defined mathematically below:</p>
-<p><span class="math display">\[z = w^T X\]</span> <span class="math display">\[\sigma(z) = \frac{e^z}{1 + e^{z}} = \frac{1}{1 + e^{-z}}\]</span> <span class="math display">\[p(y = 1 | x) = \sigma(w^{T} X)\]</span></p>
-<p>And the probability that <span class="math inline">\(y = 1\)</span> given <span class="math inline">\(x\)</span> is equal to <span class="math inline">\(\sigma(z)\)</span>, where <span class="math inline">\(z\)</span> is the weights matrix transposed <span class="math inline">\(w^T\)</span>, times <span class="math inline">\(X\)</span>, the matrix of input data.</p>
-<pre class="r"><code>sigmoid &lt;- function(z) {
-    1 / (1 + exp(-z))
-}
-z &lt;- seq(-10, 10, 0.01)
-plot(z, sigmoid(z), col = &quot;#ec0928&quot;)
-title(&quot;The Logistic Classifier&quot;)</code></pre>
-<p><img src="logistic_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="solving-for-the-conjugate-priors" class="section level2">
+<h2>Solving for the Conjugate Priors</h2>
 <hr />
-<div id="understanding-sigmaz" class="section level3">
-<h3>Understanding <span class="math inline">\(\sigma(z)\)</span></h3>
-<p>Suppose you are trying to classify books into <em>Horror</em> and <em>Sci-Fi</em> classes, with <em>Horror</em> represented by the value <span class="math inline">\(y = 0\)</span> and <em>Sci-Fi</em> represented by <span class="math inline">\(y = 1\)</span>.</p>
-<p>If you take a look at the previous plot, you can see that:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\sigma(-10) &amp;\approx 0 \\ 
-\sigma(0) &amp;= 0.5 \\
-\sigma(10) &amp;\approx 1 \\
-\end{aligned}
-\]</span></p>
-<p>The value that <span class="math inline">\(\sigma(z)\)</span> returns is a probability value, which we can use for our classification:</p>
-<p>Which indicates that:</p>
-<ul>
-<li>As <span class="math inline">\(z \to 10\)</span>, then <span class="math inline">\(p(y = 1\ | x) \to 1\)</span> and <span class="math inline">\(p(y = 0\ | x) \to 0\)</span></li>
-<li>As <span class="math inline">\(z \to -10\)</span>, then <span class="math inline">\(p((y = 1)\ | x) \to 0\)</span> and <span class="math inline">\(p(y = 0\ | x) \to 1\)</span></li>
-</ul>
+<div id="prior-on-sigma2-tau-mu-fixed-for-x-sim-mathcaln-musigma2" class="section level3">
+<h3>Prior on <span class="math inline">\(\sigma^2 / \tau\)</span>, <span class="math inline">\(\mu\)</span>-fixed, for <span class="math inline">\(X \sim \mathcal{N} (\mu,\sigma^2)\)</span></h3>
 <hr />
 </div>
-</div>
-<div id="the-hyperbolic-tangent-classifier" class="section level2">
-<h2>The Hyperbolic Tangent Classifier</h2>
-<p>The <strong>Hyperbolic Tangent</strong>, like the <strong>Logistic</strong> function is a variation of the <strong>Sigmoid</strong> function, and like the <strong>Logistic</strong> function, it is passed <span class="math inline">\(z\)</span>:</p>
-<p><span class="math display">\[
-\begin{aligned}
-z &amp;= w^T X \\
-tanh(z) &amp;= 2\sigma(2z) - 1 \\
-tanh(z) &amp;= \frac{e^z - e^{-z}}{e^z + e^{-z}} \\
-\end{aligned}
-\]</span></p>
-<pre class="r"><code>sigmoid &lt;- function(z) {
-    1 / (1 + exp(-z))
-}
-
-tanh &lt;- function(z) {
-    2*sigmoid(2*z) - 1
-}
-z &lt;- seq(-10, 10, 0.01)
-plot(z, tanh(z), col = &quot;#008CBA&quot;)
-title(&quot;The Hyperbolic Tangent Classifier&quot;)</code></pre>
-<p><img src="logistic_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<hr />
-<div id="understanding-tanhz" class="section level3">
-<h3>Understanding <span class="math inline">\(\tanh(z)\)</span></h3>
-<p>And hence prediction probabilities are also made according to the value that the <strong>Hyperbolic Tangent</strong> function returns, however there is one slight-but-important change:</p>
-<p>This time to represent <em>Horror</em> and <em>Sci-Fi</em>, we will use <span class="math inline">\(y = \left\{-1, 1\right\}\)</span>, respectively, instead of <span class="math inline">\(y= \left\{0, 1\right\}\)</span>.</p>
-<p><span class="math display">\[
-\begin{aligned}
-\tanh(-10) &amp;\approx -1 \\ 
-\tanh(0) &amp;= 0.5 \\
-\tanh(10) &amp;\approx 1 \\
-\end{aligned}
-\]</span></p>
-<p>From the previous plot:</p>
-<ul>
-<li>As <span class="math inline">\(z \to 10\)</span>, then <span class="math inline">\(p(y = 1\  | x) \to 1\)</span>, and <span class="math inline">\(p(y = 0\  | x) \to 0\)</span></li>
-<li>As <span class="math inline">\(z \to -10\)</span>, then <span class="math inline">\(p((y = 1)\  | x) \to -1\)</span> and <span class="math inline">\(p((y = 1)\  | x) \to 1\)</span></li>
-<li>If <span class="math inline">\(z = 0\)</span>, then <span class="math inline">\(p(y = 1 \ \cap \ y = 0 \ | x) = 0.5\)</span></li>
-</ul>
+<div id="prior-on-mu-and-sigma2-tau-for-x-sim-mathcaln-musigma2" class="section level3">
+<h3>Prior on <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2 / \tau\)</span>, for <span class="math inline">\(X \sim \mathcal{N} (\mu,\sigma^2)\)</span></h3>
 <hr />
 </div>
-</div>
-<div id="tldr-too-long-didnt-read." class="section level2">
-<h2>TL;DR (Too long; didn’t read.)</h2>
-<p>For the <strong>Logistic Classifier</strong>:</p>
-<ul>
-<li>If <span class="math inline">\(p(\text{Sci-Fi} | x) &gt; 0.5\)</span>, then predict Sci-Fi</li>
-<li>If <span class="math inline">\(p(\text{Sci-Fi} | x) &lt; 0.5\)</span>, then predict Horror</li>
-<li>If <span class="math inline">\(p(\text{Horror} | x) &gt; 0.5\)</span>, then predict Horror</li>
-<li>If <span class="math inline">\(p(\text{Horror} | x) &lt; 0.5\)</span>, then predict Sci-Fi</li>
-<li>If <span class="math inline">\(p(\text{Horror or Sci-Fi} | x) = 0.5\)</span>, then predict either.</li>
-</ul>
-<p>For the <strong>Hyperbolic Tangent Classifier</strong>:</p>
-<ul>
-<li>If <span class="math inline">\(p(\text{Sci-Fi} | x) &gt; 0\)</span>, then predict Sci-Fi</li>
-<li>If <span class="math inline">\(p(\text{Sci-Fi} | x) &lt; 0\)</span>, then predict Horror</li>
-<li>If <span class="math inline">\(p(\text{Horror} | x) &gt; 0\)</span>, then predict Horror</li>
-<li>If <span class="math inline">\(p(\text{Horror} | x) &lt; 0\)</span>, then predict Sci-Fi</li>
-<li>If <span class="math inline">\(p(\text{Horror or Sci-Fi} | x) = 0\)</span>, then predict either.</li>
-</ul>
+<div id="prior-on-mu-for-x-sim-mathcaln-musigma" class="section level3">
+<h3>Prior on <span class="math inline">\(\mu\)</span>, for <span class="math inline">\(X \sim \mathcal{N} (\mu,\Sigma)\)</span></h3>
 <hr />
+</div>
+<div id="prior-on-cov-tau-for-x-sim-mathcaln-musigma" class="section level3">
+<h3>Prior on <span class="math inline">\(cov / \tau\)</span>, for <span class="math inline">\(X \sim \mathcal{N} (\mu,\Sigma)\)</span></h3>
+<hr />
+</div>
+<div id="prior-on-mu-and-cov-tau-for-x-sim-mathcaln-musigma" class="section level3">
+<h3>Prior on <span class="math inline">\(\mu\)</span> and <span class="math inline">\(cov / \tau\)</span>, for <span class="math inline">\(X \sim \mathcal{N} (\mu,\Sigma)\)</span></h3>
+<hr />
+</div>
 </div>
 
 <p>Copyright &copy; 2017 AeonTech, Inc. All rights reserved.</p>

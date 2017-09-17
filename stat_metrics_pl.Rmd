@@ -6,15 +6,34 @@ output:
         toc_float: true
 ---
 
+***
+
 There are two main metrics in Powerlifting that help us regulate our training, and they are volume and intensity.
 
 However, there might be a better way to gauge the volume and intensity of our training sessions.
+
+&nbsp;
+
+<iframe class="videoeditor" width="711" height="400" src="https://www.youtube.com/embed/nEh9_JkyyQg" frameborder="0" allowfullscreen></iframe>
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+<!-- # ```{r, echo=FALSE, fig.show="hold", message=FALSE, warning=FALSE, out.width="50%", results="asis"} -->
+<!-- # knitr::include_graphics("40lbsofpain.png") -->
+<!-- # knitr::include_graphics("rbbp200kg.png") -->
+<!-- # ``` -->
+
+By the way, this is me; feeling simultaneously a little bit *strong* and a little bit *crushed*...
 
 ***
 
 ## Standard Metrics
 
-### Volume
+### Volume and Intensity
 
 __Volume__ is the measurement of the total load lifted in a training session or across multiple sessions. That being said, mathematically, in terms of weights, 
 \[V = {w \cdot r \cdot s}\]
@@ -22,9 +41,17 @@ And that is the weight $\omega$,
 repetitions $r$,  
 and finally sets $s$.
 
-***
+&nbsp;
 
-#### Example 1 - Sumo Deadlift
+__Intensity__ is the measure of how heavy are the weights used.
+It is a percentage measure of $\frac{w}{M}$, where $w$ is the weight used and $M$ is the maximum weight you are capable of lifting once, traditionally called the __1-Rep Max__ or __(1RM)__
+
+\[I = \frac{w}{M} \cdot 100 \% \]
+
+
+&nbsp;
+
+#### Volume Example 1 - Sumo Deadlift
 
 Yesterday I lifted the following:
 
@@ -41,9 +68,10 @@ Total \ Volume \ (V) &= 775 + 525 + 975 + 410 \\
 &= 2685kg
 \end{aligned}
 $$
-***
 
-#### Example 2 - Reverse Band Seated Military Press
+&nbsp;
+
+#### Volume Example 2 - Reverse Band Seated Military Press
 
 Today I plan to lift the following:
 
@@ -61,18 +89,9 @@ Total \ Volume \ (V) &= 387.5 + 262.5 + 390 + 1025 \\
 \end{aligned}
 $$
 
-***
+&nbsp;
 
-### Intensity
-
-__Intensity__ is the measure of how heavy are the weights used.
-It is a percentage measure of $\frac{w}{M}$, where $w$ is the weight used and $M$ is the maximum weight you are capable of lifting once, traditionally called the __1-Rep Max__ or __(1RM)__
-
-\[I = \frac{w}{M} \cdot 100 \% \]
-
-***
-
-#### Example 1 - Sumo Deadlift
+#### Intensity Example 1 - Sumo Deadlift
 
 Yesterday I lifted the following:
 

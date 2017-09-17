@@ -1,0 +1,37 @@
+---
+title: "Bayesian Conjugate Priors"
+output:
+    html_document:
+        toc: true
+        toc_float: true
+---
+
+***
+
+The _Bayesian paradigm_ is revolutionary because of how it differs from the _frequentist paradigm_ such that it readily accepts change, where your prior belief in the probability of an event occuring may be modified according to how often the event actually occurs, and how well it maintains this newly-found probability, or posterior.
+
+***
+
+## Solving for the Conjugate Priors
+
+***
+
+### Prior on $\sigma^2 / \tau$, $\mu$-fixed, for $X \sim \mathcal{N} (\mu,\sigma^2)$
+
+***
+
+### Prior on $\mu$ and $\sigma^2 / \tau$, for $X \sim \mathcal{N} (\mu,\sigma^2)$
+
+***
+
+### Prior on $\mu$, for $X \sim \mathcal{N} (\mu,\Sigma)$
+
+***
+
+### Prior on $cov / \tau$, for $X \sim \mathcal{N} (\mu,\Sigma)$
+
+***
+
+### Prior on $\mu$ and $cov / \tau$, for $X \sim \mathcal{N} (\mu,\Sigma)$
+
+***

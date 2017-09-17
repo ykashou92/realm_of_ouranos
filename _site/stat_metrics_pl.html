@@ -271,28 +271,11 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html"><span style="font-size:24px">Daybreak Enterprise</span></a>
+      <a class="navbar-brand" href="index.html"><span style="font-size:24px">DAYBREAK &#9788;</span></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fa fa-university fa-lg"></span>
-     
-    Projects
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="stat_metrics_pl.html">Statistical Metrics for Powerlifting</a>
-    </li>
-    <li>
-      <a href="spindle.html">Spindle</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-code fa-lg"></span>
      
@@ -344,6 +327,25 @@ div.tocify {
     <li>
       <a href="gan.html">Generative Adverserial Networks</a>
     </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Theoretical and Experimental</li>
+    <li>
+      <a href="spindle.html">Modelling an ANN with Spindle Neurons</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-paw fa-lg"></span>
+     
+    Powerlifters' Cave
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="stat_metrics_pl.html">Statistical Metrics for Powerlifting</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -362,10 +364,19 @@ div.tocify {
     Résumé
   </a>
 </li>
+<li>
+  <a href="https://github.com/ykashou92">
+    <span class="fa fa-github fa-lg"></span>
+     
+    GitHub
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+&nbsp;
+&nbsp;
 
 <div class="fluid-row" id="header">
 
@@ -376,19 +387,32 @@ div.tocify {
 </div>
 
 
+<hr />
 <p>There are two main metrics in Powerlifting that help us regulate our training, and they are volume and intensity.</p>
 <p>However, there might be a better way to gauge the volume and intensity of our training sessions.</p>
+<p> </p>
+<iframe class="videoeditor" width="711" height="400" src="https://www.youtube.com/embed/nEh9_JkyyQg" frameborder="0" allowfullscreen>
+</iframe>
+<p>       </p>
+<!-- # ```{r, echo=FALSE, fig.show="hold", message=FALSE, warning=FALSE, out.width="50%", results="asis"} -->
+<!-- # knitr::include_graphics("40lbsofpain.png") -->
+<!-- # knitr::include_graphics("rbbp200kg.png") -->
+<!-- # ``` -->
+<p>By the way, this is me; feeling simultaneously a little bit <em>strong</em> and a little bit <em>crushed</em>…</p>
 <hr />
 <div id="standard-metrics" class="section level2">
 <h2>Standard Metrics</h2>
-<div id="volume" class="section level3">
-<h3>Volume</h3>
+<div id="volume-and-intensity" class="section level3">
+<h3>Volume and Intensity</h3>
 <p><strong>Volume</strong> is the measurement of the total load lifted in a training session or across multiple sessions. That being said, mathematically, in terms of weights, <span class="math display">\[V = {w \cdot r \cdot s}\]</span> And that is the weight <span class="math inline">\(\omega\)</span>,<br />
 repetitions <span class="math inline">\(r\)</span>,<br />
 and finally sets <span class="math inline">\(s\)</span>.</p>
-<hr />
-<div id="example-1---sumo-deadlift" class="section level4">
-<h4>Example 1 - Sumo Deadlift</h4>
+<p> </p>
+<p><strong>Intensity</strong> is the measure of how heavy are the weights used. It is a percentage measure of <span class="math inline">\(\frac{w}{M}\)</span>, where <span class="math inline">\(w\)</span> is the weight used and <span class="math inline">\(M\)</span> is the maximum weight you are capable of lifting once, traditionally called the <strong>1-Rep Max</strong> or <strong>(1RM)</strong></p>
+<p><span class="math display">\[I = \frac{w}{M} \cdot 100 \% \]</span></p>
+<p> </p>
+<div id="volume-example-1---sumo-deadlift" class="section level4">
+<h4>Volume Example 1 - Sumo Deadlift</h4>
 <p>Yesterday I lifted the following:</p>
 <table>
 <thead>
@@ -431,10 +455,11 @@ and finally sets <span class="math inline">\(s\)</span>.</p>
 Total \ Volume \ (V) &amp;= 775 + 525 + 975 + 410 \\
 &amp;= 2685kg
 \end{aligned}
-\]</span> ***</p>
+\]</span></p>
+<p> </p>
 </div>
-<div id="example-2---reverse-band-seated-military-press" class="section level4">
-<h4>Example 2 - Reverse Band Seated Military Press</h4>
+<div id="volume-example-2---reverse-band-seated-military-press" class="section level4">
+<h4>Volume Example 2 - Reverse Band Seated Military Press</h4>
 <p>Today I plan to lift the following:</p>
 <table>
 <thead>
@@ -478,16 +503,10 @@ Total \ Volume \ (V) &amp;= 387.5 + 262.5 + 390 + 1025 \\
 &amp;= 2075kg
 \end{aligned}
 \]</span></p>
-<hr />
+<p> </p>
 </div>
-</div>
-<div id="intensity" class="section level3">
-<h3>Intensity</h3>
-<p><strong>Intensity</strong> is the measure of how heavy are the weights used. It is a percentage measure of <span class="math inline">\(\frac{w}{M}\)</span>, where <span class="math inline">\(w\)</span> is the weight used and <span class="math inline">\(M\)</span> is the maximum weight you are capable of lifting once, traditionally called the <strong>1-Rep Max</strong> or <strong>(1RM)</strong></p>
-<p><span class="math display">\[I = \frac{w}{M} \cdot 100 \% \]</span></p>
-<hr />
-<div id="example-1---sumo-deadlift-1" class="section level4">
-<h4>Example 1 - Sumo Deadlift</h4>
+<div id="intensity-example-1---sumo-deadlift" class="section level4">
+<h4>Intensity Example 1 - Sumo Deadlift</h4>
 <p>Yesterday I lifted the following:</p>
 <table>
 <thead>

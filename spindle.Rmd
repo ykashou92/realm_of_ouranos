@@ -1,0 +1,41 @@
+---
+title: Modelling an ANN with Spindle Neurons
+output:
+    html_document:
+        toc: true
+        toc_float: true
+        fig_caption: true
+---
+
+***
+
+## Spindle Neurons in Biology
+
+__Spindle neurons__ (SNs) or __von Economo neurons__ (VENs) differ from ordinary neurons in a couple of ways:
+
+- __Structure__ : They are structurally different, and are usually much longer that tapers into a single _axon_ (output) and have only a single _dentrite_ (input) as opposed to ordinary neurons which usually have many _dendtrites_.
+
+- __Abundance__ : They are present in specific regions of large mammalian brains and only a few recorded species have them, they represent an adaptation to larger brains, especially for the function of transmitting information faster.
+
+## Proposed Mathematics of an Artificial Spindle Neuron
+
+In machine learning, a neuron, or a classifier unit is modelled by having multiple inputs and a single output - similar to neurons in biology.
+
+Likewise, we are going to attempt to create a neuron, that has a single input and a single output - similar to spindle neurons in biology, however it will also carry it's characteristic fast information transfer with lower information entropy.
+
+__Artificial Neuron__
+
+$$
+p(y = 1 | x) = \sigma(w^{T} X)
+$$
+
+__Artificial Spindle Neuron__ 
+
+$$
+\psi (\sigma(w^{T} X), \ \delta) = 
+$$
+
+***
+
+
+### Explanation

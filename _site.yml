@@ -1,4 +1,4 @@
-name: "the_daybreak_enterprise"
+name: "daybreak"
 output_dir: _site
 urlcolor: yellow
 output:
@@ -9,20 +9,12 @@ output:
     #highlight: tango
 
     include:
+      before_body: header.html
       after_body: footer.html
 navbar:
-  title: <span style="font-size:24px">Daybreak Enterprise</span>
+  title: <span style="font-size:24px">&#9788; DAYBREAK &#9788;</span>
   href:
   left:
-    - text: "Projects"
-      menu:
-        - text: "Statistical Metrics for Powerlifting"
-          href: stat_metrics_pl.html
-        - text: "Spindle"
-          icon:
-          href: spindle.html
-      href: projects.html
-      icon: fa-university fa-lg
     - text: "Data Wizardry"
       href: data.html
       icon: fa-code fa-lg
@@ -55,6 +47,16 @@ navbar:
           href: neural.html
         - text: "Generative Adverserial Networks"
           href: gan.html
+        - text: "---------"
+        - text: "Theoretical and Experimental"
+        - text: "Modelling an ANN with Spindle Neurons"
+          href: spindle.html
+    - text: "Powerlifters' Cave"
+      href: math.html
+      icon: fa-paw fa-lg
+      menu:
+        - text: "Statistical Metrics for Powerlifting"
+          href: stat_metrics_pl.html
   right:
     - text: "About Me!"
       href: about.html
@@ -62,3 +64,6 @@ navbar:
     - text: "Résumé"
       href: https://drive.google.com/file/d/0B_vLNTzY7-nKQnNYOTFwX3hqZ0E/view?usp=sharing
       icon: fa-file-pdf-o fa-lg
+    - text: "GitHub"
+      href: https://github.com/ykashou92
+      icon: fa-github fa-lg
