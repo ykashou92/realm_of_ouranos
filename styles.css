@@ -23,6 +23,7 @@
 /* Default title colour, no hover*/
 .navbar-default .navbar-brand {
     color: #008CBA;
+    font-size: 22px;
 }
 
 .nav-tabs > li > a {

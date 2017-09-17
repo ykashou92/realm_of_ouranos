@@ -12,20 +12,9 @@ output:
       before_body: header.html
       after_body: footer.html
 navbar:
-  title: <span style="font-size:24px">&#9788; DAYBREAK &#9788;</span>
+  title: <span style="color:orange">&#9788; </span><span style="font-size:24px">DAYBREAK</span>
   href:
   left:
-    - text: "Data Wizardry"
-      href: data.html
-      icon: fa-code fa-lg
-      menu:
-        - text: "R, Shiny & Knitr"
-        - text: "Data Driven Dashboards with R"
-          href: ddd_R.html
-        - text: "---------"
-        - text: "Python and Anaconda"
-        - text: "lr.py"
-          href: lr.html
     - text: "Math Madness"
       href: math.html
       icon: fa-superscript fa-lg
@@ -51,6 +40,17 @@ navbar:
         - text: "Theoretical and Experimental"
         - text: "Modelling an ANN with Spindle Neurons"
           href: spindle.html
+    - text: "Data Wizardry"
+      href: data.html
+      icon: fa-code fa-lg
+      menu:
+        - text: "R, Shiny & Knitr"
+        - text: "Data Driven Dashboards with R"
+          href: ddd_R.html
+        - text: "---------"
+        - text: "Python and Anaconda"
+        - text: "lr.py"
+          href: lr.html
     - text: "Powerlifters' Cave"
       href: math.html
       icon: fa-paw fa-lg

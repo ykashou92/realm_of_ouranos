@@ -6,23 +6,21 @@ output:
         toc_float: true
 ---
 
-
 ***
 
 ```{r setup, include=FALSE}
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
-Welcome to __&#9788; Daybreak &#9788;__, your resource for data science, my mathematical endeavours, my daybreak expression and initiative.
+Welcome to <span style="color:orange">&#9788; </span><span style="color:#008cba"><b>Daybreak</b></span>, your resource for data science, my mathematical endeavours, my daybreak expression and initiative.
 
-In this website you'll find the following:
+In the navigation bar at the top you'll find the following:
 
-- __Mathematics__ ranging from simple _Calculus_ to _A.I_.
-- __Data Science__ methodologies, explanations and code implementations in _R_, _Python_ and _Julia_.
-- __Data Visualizations__ because aesthetics are important too.
+- __Math Madness__, a section devoted to mathematics, ranging from simple _Calculus_ to _A.I_.
+- __Data Wizardry__, a section devoted to data science projects, methodologies, explanations and code implementations in _R_, _Python_ and _Julia_.
+- __Powerlifters' Cave__, a section devoted to my powerlifting hobby and special metrics and designs of my invention to regulate my training.
 
 ***
-
 
 ## Current Projects  
 
