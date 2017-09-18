@@ -12,7 +12,7 @@ output:
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 ```
 
-Welcome to <span style="color:orange">&#9788; </span><span style="color:#008cba"><b>Daybreak</b></span>, your resource for data science, my mathematical endeavours, my daybreak expression and initiative.
+Welcome to <span style="color:black">&#9797; </span><span style="color:#008cba"><b>Realm of Ouranos</b></span>, your resource for data science, my mathematical endeavours, my daybreak expression and initiative.
 
 In the navigation bar at the top you'll find the following:
 

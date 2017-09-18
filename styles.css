@@ -23,7 +23,7 @@
 /* Default title colour, no hover*/
 .navbar-default .navbar-brand {
     color: #008CBA;
-    font-size: 22px;
+    font-size: 24px;
 }
 
 .nav-tabs > li > a {
@@ -119,3 +119,29 @@ tocify ul, .tocify li {
     display: block
 }
 
+.imageeditor {
+	margin: 0 auto;
+	border: 5px solid #000000;
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius:50%;
+}
+
+
+/* Color the TOC */
+
+/*
+.tocify {
+    border: 3px solid #ccc;
+    border-radius: 6px;
+}
+
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    z-index: 2;
+    color: #ffffff;
+    background-color: #ec0928;
+    border-color: #008cba;
+}
+*/

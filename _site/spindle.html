@@ -271,7 +271,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html"><span style="color:orange">&#9788; </span><span style="font-size:24px">DAYBREAK</span></a>
+      <a class="navbar-brand" href="index.html"><span style="color:white">&#9797; </span>Realm of Ouranos</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -375,8 +375,7 @@ div.tocify {
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
-&nbsp;
-&nbsp;
+
 
 <div class="fluid-row" id="header">
 
@@ -395,6 +394,7 @@ div.tocify {
 <li><p><strong>Structure</strong> : They are structurally different, and are usually much longer that tapers into a single <em>axon</em> (output) and have only a single <em>dentrite</em> (input) as opposed to ordinary neurons which usually have many <em>dendtrites</em>.</p></li>
 <li><p><strong>Abundance</strong> : They are present in specific regions of large mammalian brains and only a few recorded species have them, they represent an adaptation to larger brains, especially for the function of transmitting information faster.</p></li>
 </ul>
+<hr />
 </div>
 <div id="proposed-mathematics-of-an-artificial-spindle-neuron" class="section level2">
 <h2>Proposed Mathematics of an Artificial Spindle Neuron</h2>
@@ -406,11 +406,57 @@ p(y = 1 | x) = \sigma(w^{T} X)
 \]</span></p>
 <p><strong>Artificial Spindle Neuron</strong></p>
 <p><span class="math display">\[
-\psi (\sigma(w^{T} X), \ \delta) = 
+\psi (\sigma(w^{T} X), \ \beta, \ \delta) = \sigma \cdot\ln{(\delta \beta)}
 \]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(\psi\)</span> represents the spindle neuron function</p></li>
+<li><p><span class="math inline">\(\sigma(z)\)</span> represents the output from a neuron, specifically <span class="math inline">\(p(y = 1 | x)\)</span>, i.e. the <em>probability</em> of <span class="math inline">\(y = 1\)</span> <em>given</em> <span class="math inline">\(x\)</span></p></li>
+<li><p><span class="math inline">\(\delta\)</span> represents the <em>difference in momentum</em>, or <em>required velocity of information transfer</em>, i.e. it is a function of <em>inverse entropy</em> <span class="math inline">\((\epsilon^{-1})\)</span>.</p></li>
+</ul>
+<p>In other words, we must transform the information <span class="math inline">\(\sigma\)</span> that we wish to transfer by the inverse entropy function <span class="math inline">\(\delta\)</span>, such that the information that <span class="math inline">\(\sigma\)</span> holds remains relevant to the network as a whole, which we will keep track of using a parameter <span class="math inline">\(\beta\)</span>, as a measure of relevancy decay.</p>
+<p><span class="math display">\[
+\beta = \alpha \epsilon^{-1}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(\beta\)</span> = decayed relevancy</p></li>
+<li><p><span class="math inline">\(\alpha\)</span> = learning rate</p></li>
+<li><p><span class="math inline">\(\epsilon\)</span> = information entropy</p></li>
+</ul>
+<p><span class="math display">\[
+\Delta = \delta\beta = \delta \alpha \epsilon^{-1} 
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><p><span class="math inline">\(\delta\)</span> is the relative discrete distance from neuron A to neuron B</p></li>
+<li><p><span class="math inline">\(\delta\)</span>, multiplied by <span class="math inline">\(\beta\)</span> <span class="math inline">\((\alpha \epsilon^{-1})\)</span>.</p></li>
+</ul>
+<p><span class="math display">\[
+\psi (\sigma(z), \ \beta, \ \delta) = |\sigma(w^T X)| \cdot \ln{(\delta \alpha \epsilon^{-1})}
+\]</span></p>
+<pre class="r"><code>psi_function = function(alpha, epsilon, delta, sigma) {
+    psi = abs(sigma)*log2(delta*(alpha)*(epsilon^-1))
+    return(psi)
+}
+psi_function(alpha = c(0.01, 0.1, 1.0, 10.0, 100), # learning rates
+             epsilon = 0.30, # information entropy, % of information loss
+             delta = 7, # 7 Networks to pass through
+             sigma = 0.75)# probability</code></pre>
+<pre><code>## [1] -1.5746518  0.9167943  3.4082404  5.8996865  8.3911325</code></pre>
 <hr />
-<div id="explanation" class="section level3">
-<h3>Explanation</h3>
+<div id="what-does-the-value-of-psi-actually-mean" class="section level3">
+<h3>What does the value of <strong><span class="math inline">\(\psi\)</span></strong> actually <em>mean</em>?</h3>
+<p><strong>Objectives</strong> :<br />
+Where <span class="math inline">\(\psi \in \mathbb{Z}\)</span>…</p>
+<ol style="list-style-type: decimal">
+<li>Explain the meaning of the value of <span class="math inline">\(\psi \longrightarrow \infty\)</span><br />
+</li>
+<li>Explain the meaning of the value of <span class="math inline">\(\psi \longrightarrow -\infty\)</span><br />
+</li>
+<li>What does each of the values in <span class="math inline">\(\psi = \{-1, 0, 1\}\)</span> mean?</li>
+</ol>
+<hr />
 </div>
 </div>
 

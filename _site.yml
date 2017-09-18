@@ -12,7 +12,8 @@ output:
       before_body: header.html
       after_body: footer.html
 navbar:
-  title: <span style="color:orange">&#9788; </span><span style="font-size:24px">DAYBREAK</span>
+  title: <span style="color:white">&#9797; </span>Realm of Ouranos
+# <span style="color:#ec0928"><i class="fa fa-sun-o fa-spin"></i></span><span style="font-size:24px"> Daybreak</span>
   href:
   left:
     - text: "Math Madness"

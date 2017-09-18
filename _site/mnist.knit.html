@@ -11,7 +11,7 @@
 
 
 
-<title>Statistical Metrics for Powerlifting</title>
+<title>MNIST</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +25,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
-<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -271,7 +270,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html"><span style="color:white">&#9797; </span>Realm of Ouranos</a>
+      <a class="navbar-brand" href="index.html"><span style="color:orange">&#9788; </span><span style="font-size:24px">DAYBREAK</span></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -381,205 +380,76 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Statistical Metrics for Powerlifting</h1>
+<h1 class="title toc-ignore">MNIST</h1>
 
 </div>
 
 
 <hr />
-<p>There are two main metrics in Powerlifting that help us regulate our training, and they are volume and intensity.</p>
-<p>However, there might be a better way to gauge the volume and intensity of our training sessions.</p>
-<p> </p>
-<iframe class="videoeditor" width="711" height="400" src="https://www.youtube.com/embed/nEh9_JkyyQg" frameborder="0" allowfullscreen>
-</iframe>
-<p>       </p>
-<!-- # ```{r, echo=FALSE, fig.show="hold", message=FALSE, warning=FALSE, out.width="50%", results="asis"} -->
-<!-- # knitr::include_graphics("40lbsofpain.png") -->
-<!-- # knitr::include_graphics("rbbp200kg.png") -->
-<!-- # ``` -->
-<p>By the way, this is me; feeling simultaneously a little bit <em>strong</em> and a little bit <em>crushed</em>…</p>
+<p>The MNIST dataset is a large dataset of handwritten digits; used primarily for the training of image processing systems.</p>
+<p>Many researchers usually test the performance of their algorithms and neural network implementations on this dataset.</p>
+<p><img src="mnist_dark.png" width="30%" /><img src="mnist_sorted.png" width="30%" /><img src="mnist_4.png" width="30%" /></p>
 <hr />
-<div id="standard-metrics" class="section level2">
-<h2>Standard Metrics</h2>
-<div id="volume-and-intensity" class="section level3">
-<h3>Volume and Intensity</h3>
-<p><strong>Volume</strong> is the measurement of the total load lifted in a training session or across multiple sessions. That being said, mathematically, in terms of weights, <span class="math display">\[V = {w \cdot r \cdot s}\]</span> And that is the weight <span class="math inline">\(\omega\)</span>,<br />
-repetitions <span class="math inline">\(r\)</span>,<br />
-and finally sets <span class="math inline">\(s\)</span>.</p>
-<p> </p>
-<p><strong>Intensity</strong> is the measure of how heavy are the weights used. It is a percentage measure of <span class="math inline">\(\frac{w}{M}\)</span>, where <span class="math inline">\(w\)</span> is the weight used and <span class="math inline">\(M\)</span> is the maximum weight you are capable of lifting once, traditionally called the <strong>1-Rep Max</strong> or <strong>(1RM)</strong></p>
-<p><span class="math display">\[I = \frac{w}{M} \cdot 100 \% \]</span></p>
-<p> </p>
-<div id="volume-example-1---sumo-deadlift" class="section level4">
-<h4>Volume Example 1 - Sumo Deadlift</h4>
-<p>Yesterday I lifted the following:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">Weight <span class="math inline">\((w)\)</span></th>
-<th align="center">Repetitions <span class="math inline">\((r)\)</span></th>
-<th align="center">Sets <span class="math inline">\((s)\)</span></th>
-<th align="center">Volume <span class="math inline">\((V)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">155</td>
-<td align="center">5</td>
-<td align="center">1</td>
-<td align="center">775</td>
-</tr>
-<tr class="even">
-<td align="center">175</td>
-<td align="center">3</td>
-<td align="center">1</td>
-<td align="center">525</td>
-</tr>
-<tr class="odd">
-<td align="center">195</td>
-<td align="center">5</td>
-<td align="center">1</td>
-<td align="center">975</td>
-</tr>
-<tr class="even">
-<td align="center">205</td>
-<td align="center">2</td>
-<td align="center">1</td>
-<td align="center">410</td>
-</tr>
-</tbody>
-</table>
+<div id="the-data" class="section level2">
+<h2>The Data</h2>
+<div id="what-does-the-data-look-like" class="section level3">
+<h3>What does the data look like?</h3>
+<pre class="python"><code></code></pre>
+</div>
+<div id="processing-the-data" class="section level3">
+<h3>Processing the Data</h3>
+<pre><code></code></pre>
+<hr />
+</div>
+</div>
+<div id="the-activationclassifier-functions" class="section level2">
+<h2>The Activation/Classifier Functions</h2>
+<p>We are going to test and benchmark 3 different <strong><em>activation functions</em></strong> or <strong><em>neurons</em></strong> for our classifier net, the logistic sigmoid <span class="math inline">\(f_1\)</span>, the hyperbolic tangent <span class="math inline">\(f_2\)</span>, and the approximate hyperbolic tangent <span class="math inline">\(f_3\)</span>.</p>
 <p><span class="math display">\[
 \begin{aligned}
-Total \ Volume \ (V) &amp;= 775 + 525 + 975 + 410 \\
-&amp;= 2685kg
+f_1(x) &amp;= \sigma(x) \\
+f_2(x) &amp;= \tanh(x) \\
+f_3(x) &amp;= 1.7159 \cdot \tanh(\frac{2}{3}x) \\
 \end{aligned}
 \]</span></p>
-<p> </p>
-</div>
-<div id="volume-example-2---reverse-band-seated-military-press" class="section level4">
-<h4>Volume Example 2 - Reverse Band Seated Military Press</h4>
-<p>Today I plan to lift the following:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">Weight <span class="math inline">\((w)\)</span></th>
-<th align="center">Repetitions <span class="math inline">\((r)\)</span></th>
-<th align="center">Sets <span class="math inline">\((s)\)</span></th>
-<th align="center">Volume <span class="math inline">\((V)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">77.5</td>
-<td align="center">5</td>
-<td align="center">1</td>
-<td align="center">387.5</td>
-</tr>
-<tr class="even">
-<td align="center">87.5</td>
-<td align="center">3</td>
-<td align="center">1</td>
-<td align="center">262.5</td>
-</tr>
-<tr class="odd">
-<td align="center">97.5</td>
-<td align="center">4</td>
-<td align="center">1</td>
-<td align="center">390</td>
-</tr>
-<tr class="even">
-<td align="center">102.5</td>
-<td align="center">2</td>
-<td align="center">5</td>
-<td align="center">1025</td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[
-\begin{aligned}
-Total \ Volume \ (V) &amp;= 387.5 + 262.5 + 390 + 1025 \\
-&amp;= 2075kg
-\end{aligned}
-\]</span></p>
-<p> </p>
-</div>
-<div id="intensity-example-1---sumo-deadlift" class="section level4">
-<h4>Intensity Example 1 - Sumo Deadlift</h4>
-<p>Yesterday I lifted the following:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">Weight <span class="math inline">\((w)\)</span></th>
-<th align="center">1RM <span class="math inline">\((M)\)</span></th>
-<th align="center">Intensity <span class="math inline">\((I)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">155</td>
-<td align="center">220</td>
-<td align="center">70.45%</td>
-</tr>
-<tr class="even">
-<td align="center">175</td>
-<td align="center">220</td>
-<td align="center">79.54%</td>
-</tr>
-<tr class="odd">
-<td align="center">195</td>
-<td align="center">220</td>
-<td align="center">88.63%</td>
-</tr>
-<tr class="even">
-<td align="center">205</td>
-<td align="center">220</td>
-<td align="center">93.18%</td>
-</tr>
-</tbody>
-</table>
-<p><span class="math display">\[
-\begin{aligned}
-Average \ Intensity \ (I) &amp;= (70.45\% + 79.54\% + 88.63\% + 93.18\%) / 4 \\
-&amp;= 82.95\%
-\end{aligned}
-\]</span></p>
+<pre class="r"><code>f1 &lt;- function(x) {
+1 / (1 + exp(-x))
+}
+
+f2 &lt;- function(x) {
+2*f1(2*x) - 1
+}
+
+f3 &lt;- function(x){
+1.7159*f2((2/3)*x)
+}
+
+x &lt;- seq(-10, 10, 0.01)
+
+matplot(x,
+cbind(f1(x),f2(x), f3(x)),
+type=&quot;l&quot;,
+lty = &quot;solid&quot;,
+col=c(&quot;#ec0928&quot;, &quot;#008cba&quot;, &quot;#cbcbcb&quot;),
+lwd = 4)</code></pre>
+<p><img src="mnist_files/figure-html/Comparison%20of%20Activation%20Functions-1.png" width="672" /></p>
 <hr />
 </div>
+<div id="implementation-in-code" class="section level2 tabset">
+<h2>Implementation in Code</h2>
+<div id="sigmax" class="section level3">
+<h3><span class="math inline">\(\sigma(x)\)</span></h3>
 </div>
+<div id="tanhx" class="section level3">
+<h3><span class="math inline">\(\tanh(x)\)</span></h3>
 </div>
-<div id="proposed-relative-metrics" class="section level2 tabset">
-<h2>Proposed Relative Metrics</h2>
-<div id="relative-average-volume-rav" class="section level3">
-<h3>Relative Average Volume (RAV)</h3>
+<div id="cdot-tanhfrac23x" class="section level3">
+<h3><span class="math inline">\(1.7159 \cdot \tanh(\frac{2}{3}x)\)</span></h3>
+<pre class="python"><code>import sys
+print(sys.version)</code></pre>
+<pre><code>## 3.6.1 |Anaconda 4.4.0 (64-bit)| (default, May 11 2017, 13:25:24) [MSC v.1900 64 bit (AMD64)]</code></pre>
 <hr />
 </div>
-<div id="relative-intensity-volume-riv" class="section level3">
-<h3>Relative Intensity Volume (RIV)</h3>
-<hr />
-</div>
-</div>
-<div id="proposed-absolute-metrics" class="section level2 tabset">
-<h2>Proposed Absolute Metrics</h2>
-<div id="absolute-average-volume-aav" class="section level3">
-<h3>Absolute Average Volume (AAV)</h3>
-<hr />
-</div>
-<div id="absolute-intensity-volume-aiv" class="section level3">
-<h3>Absolute Intensity Volume (AIV)</h3>
-<hr />
-</div>
-</div>
-<div id="tldr-too-long-didnt-read." class="section level2">
-<h2>TL;DR (Too long; didn’t read.)</h2>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
-<hr />
 </div>
 
 <p>Copyright &copy; 2017 AeonTech, Inc. All rights reserved.</p>

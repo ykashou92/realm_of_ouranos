@@ -4,6 +4,8 @@ title: "About Me!"
 
 ***
 
+<img  class="imageeditor" src="me.png" alt="me" height="250" width="250"> 
+
 My name is <span style="color:#ec0928"><b>Yanal Kashou</b></span>, and I'm a __polymath__, a __seeker of mathematical enlightenment__, a __data scientist__, and a __powerlifter__.   
 
 I have a _BMathSc in Applied Mathematics and Astronomy_ from __AUT__
